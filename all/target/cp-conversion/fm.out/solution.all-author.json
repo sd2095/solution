@@ -1,0 +1,45 @@
+{
+  "id":"com.sd:solution.all:slingosgifeature:author:1.0.0-SNAPSHOT",
+  "configurations":  {
+    "com.adobe.granite.cors.impl.CORSPolicyImpl~solution":    {
+      "alloworigin":[
+        "http://localhost:3000"
+      ],
+      "allowedpaths":[
+        "/(content|conf)/solution.*"
+      ],
+      "supportedheaders":[
+        "Authorization",
+        "Origin",
+        "Accept",
+        "X-Requested-With",
+        "Content-Type",
+        "Access-Control-Request-Method",
+        "Access-Control-Request-Headers"
+      ],
+      "supportedmethods":[
+        "GET",
+        "HEAD"
+      ],
+      "alloworiginregexp":[
+      ],
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "com.adobe.granite.resourcestatus.impl.CompositeStatusType~editor.config":    {
+      "name":"editor",
+      "types":[
+        "catalog-page",
+        "workflow",
+        "launches"
+      ],
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "com.day.cq.wcm.mobile.core.impl.MobileEmulatorProvider~solution":    {
+      "mobile.resourceTypes":[
+        "solution/components/page"
+      ],
+      "README":"Indicate which page resource types should display the mobile emulators.",
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    }
+  }
+}

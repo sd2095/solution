@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Created-By: Apache Jackrabbit FileVault - Package Maven Plugin 1.3.6
+Build-Jdk-Spec: 17
+Implementation-Title: SD - Solution - UI apps
+Implementation-Version: 1.0.0-SNAPSHOT
+Content-Package-Type: application
+Content-Package-Id: com.sd:solution.ui.apps:1.0.0-SNAPSHOT
+Content-Package-Description: UI apps package for SD - Solution
+Content-Package-Roots: /apps/solution/clientlibs,/apps/solution/componen
+ ts,/apps/solution/i18n
+

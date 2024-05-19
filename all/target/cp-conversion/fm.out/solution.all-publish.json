@@ -1,0 +1,21 @@
+{
+  "id":"com.sd:solution.all:slingosgifeature:publish:1.0.0-SNAPSHOT",
+  "configurations":  {
+    "com.adobe.cq.commerce.core.components.internal.services.UrlProviderImpl":    {
+      "productUrlTemplate":"{{page}}.{{url_key}}.html#{{variant_sku}}",
+      "productIdentifierLocation":"SELECTOR",
+      "productIdentifierType":"URL_KEY",
+      "categoryUrlTemplate":"{{page}}.{{id}}.html/{{url_path}}",
+      "categoryIdentifierLocation":"SELECTOR",
+      "categoryIdentifierType":"ID",
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "org.apache.sling.jcr.resource.internal.JcrResourceResolverFactoryImpl":    {
+      "resource.resolver.mapping":[
+        "/content/solution/</",
+        "/:/"
+      ],
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    }
+  }
+}

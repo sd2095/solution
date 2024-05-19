@@ -1,0 +1,77 @@
+{
+  "id":"com.sd:solution.all:slingosgifeature:1.0.0-SNAPSHOT",
+  "bundles":[
+    {
+      "id":"com.sd:solution.core:1.0.0-SNAPSHOT",
+      "Bundle-SymbolicName":"solution.core",
+      "Bundle-Version":"1.0.0.SNAPSHOT",
+      "start-order":"20",
+      "content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT"
+    }
+  ],
+  "configurations":  {
+    "com.adobe.cq.commerce.core.components.internal.services.UrlProviderImpl":    {
+      "productUrlTemplate":"{{page}}.{{url_key}}.html#{{variant_sku}}",
+      "productIdentifierLocation":"SELECTOR",
+      "productIdentifierType":"URL_KEY",
+      "categoryUrlTemplate":"{{page}}.{{id}}.html",
+      "categoryIdentifierLocation":"SELECTOR",
+      "categoryIdentifierType":"ID",
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "com.adobe.cq.commerce.core.components.internal.servlets.SpecificPageFilterFactory~default":    {
+      "sling.filter.pattern":"/content/solution/.*?/(category-page|product-page)",
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "com.adobe.cq.commerce.graphql.client.impl.GraphqlClientImpl~default":    {
+      "httpMethod":"GET",
+      "connectionTimeout:Integer":5000,
+      "maxHttpConnections:Integer":20,
+      "url":"https://hostname.com/graphql",
+      "identifier":"default",
+      "requestPoolTimeout:Integer":2000,
+      "acceptSelfSignedCertificates":false,
+      "socketTimeout:Integer":5000,
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "com.adobe.cq.wcm.core.components.internal.servlets.TableOfContentsFilter~solution":    {
+      "enabled":"true",
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    },
+    "org.apache.sling.commons.log.LogManager.factory.config~solution":    {
+      "org.apache.sling.commons.log.names":[
+        "com.sd.solution"
+      ],
+      "org.apache.sling.commons.log.level":"INFO",
+      "org.apache.sling.commons.log.file":"logs/error.log",
+      "org.apache.sling.commons.log.additiv":"false",
+      ":configurator:content-package-origins":"com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT"
+    }
+  },
+  "repoinit:TEXT|true":[
+    "# origin=com.sd:solution.all:1.0.0-SNAPSHOT|com.sd:solution.ui.config:1.0.0-SNAPSHOT source=org.apache.sling.jcr.repoinit.RepositoryInitializer~solution\r",
+    "create path (sling:OrderedFolder) /content/dam/solution\r",
+    "create path (nt:unstructured) /content/dam/solution/jcr:content\r",
+    "set properties on /content/dam/solution/jcr:content",
+    "  set cq:conf{String} to /conf/solution",
+    "  set jcr:title{String} to \"SD - Solution\"",
+    "end"
+  ],
+  "content-packages:ARTIFACTS|true":[
+    "com.sd:solution.ui.config:zip:cp2fm-converted:1.0.0-SNAPSHOT",
+    "com.sd:solution.ui.apps:zip:cp2fm-converted:1.0.0-SNAPSHOT",
+    "com.sd:solution.all:zip:cp2fm-converted:1.0.0-SNAPSHOT"
+  ],
+  "api-regions:JSON|false":[
+    {
+      "name":"global",
+      "exports":[
+        "com.sd.solution.core.filters",
+        "com.sd.solution.core.listeners",
+        "com.sd.solution.core.models",
+        "com.sd.solution.core.schedulers",
+        "com.sd.solution.core.servlets"
+      ]
+    }
+  ]
+}
